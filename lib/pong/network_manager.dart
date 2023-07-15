@@ -40,7 +40,7 @@ class NetworkManager extends GameObject {
             );
 
       if (canWrite) {
-        final bytesSent = socket!.send(newPacket.toBytes(), InternetAddress.loopbackIPv4, int.parse(ipSplit.last));
+        final bytesSent = socket!.send(newPacket.toBytes(), InternetAddress.tryParse(ipSplit.first)!, int.parse(ipSplit.last));
 
         if (bytesSent == 0) {
           canWrite = false;
@@ -82,7 +82,7 @@ class NetworkManager extends GameObject {
   }
 
   void createNetworkConnection() {
-    RawDatagramSocket.bind(InternetAddress.loopbackIPv4, listenPort ?? int.parse(ip.split(":").last)).then((val) {
+    RawDatagramSocket.bind(InternetAddress.anyIPv4, listenPort ?? int.parse(ip.split(":").last)).then((val) {
       socket = val;
 
       socketSubscription = socket!.listen((event) {
