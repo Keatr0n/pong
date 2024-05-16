@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pong/network_tester/network_tester.dart';
 import 'package:pong/pong/pong.dart';
 
 void main() {

@@ -32,7 +32,6 @@ class _GameScreenState extends State<GameScreen> {
       isReady = true;
     });
 
-
     super.initState();
   }
 
